@@ -3,17 +3,18 @@ const result = document.getElementById("result-message");
 const checkMessageButton = document.getElementById("check-message-btn");
 
 const helpRegex = /please help|assist me/i;
-const denyList = [helpRegex];
-function isSpam (msg){return denyList.some(regex =>regex.test(msg))}
+const dollarRegex = /dollars/i;
+const denyList = [helpRegex,dollarRegex];
+const isSpam = (msg) => denyList.some((regex) => regex.test(msg));
 
-function pls(){
-  if(!messageInput.value.trim()){
-    alert("Please enter a message.")
+checkMessageButton.addEventListener("click", () => {
+  if (messageInput.value === "") {
+    alert("Please enter a message.");
+    return;
   }
-  isSpam(messageInput.value) ? result.textContent ='Oh no! This looks like a spam message.' : result.textContent = 'This message does not seem to contain any spam.'
 
-  messageInput.value = ''
-}
-checkMessageButton.addEventListener('click',pls)
-
-
+  result.textContent = isSpam(messageInput.value)
+    ? "Oh no! This looks like a spam message."
+    : "This message does not seem to contain any spam.";
+  messageInput.value = "";
+});
