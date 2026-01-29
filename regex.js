@@ -3,8 +3,10 @@ const result = document.getElementById("result-message");
 const checkMessageButton = document.getElementById("check-message-btn");
 
 const helpRegex = /please help|assist me/i;
-const dollarRegex = /dollars/i;
-const denyList = [helpRegex,dollarRegex];
+const dollarRegex = /[0-9]+ (hundred|thousand|million|billion) dollars/i;
+
+const denyList = [helpRegex, dollarRegex];
+
 const isSpam = (msg) => denyList.some((regex) => regex.test(msg));
 
 checkMessageButton.addEventListener("click", () => {
