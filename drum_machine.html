@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Drum Machine</title>
+    <div id='drum-machine'>
+      <div id='pad-bank'>
+        <button class='drum-pad'>Q</button>
+        <button class='drum-pad'id ='W'>W</button>
+        <button class='drum-pad'id ='E'>E</button>
+
+        <button class='drum-pad'id ='A'>A</button>
+        <button class='drum-pad'id ='S'>S</button>
+        <button class='drum-pad'id ='D'>D</button>
+
+        <button class='drum-pad'id ='Z'>Z</button>
+        <button class='drum-pad'id ='X'>X</button>
+        <button class='drum-pad'id ='C'>C</button>
+      </div>
+      <p id='display'></p>
+  </div>
+    
+  </head>
+  <body></body>
+  <script>    
+const Q_audio_smooth = 'https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3'
+const W_audio_smooth = 'https://s3.amazonaws.com/freecodecamp/drums/Chord_2.mp3'
+const E_audio_smooth = 'https://s3.amazonaws.com/freecodecamp/drums/Chord_3.mp3'
+const A_audio_smooth = 'https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3'
+const S_audio_smooth = 'https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3'
+const D_audio_smooth = 'https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3'
+const Z_audio_smooth = 'https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3'
+const X_audio_smooth = 'https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3'
+const C_audio_smooth = 'https://s3.amazonaws.com/freecodecamp/drums/Brk_Snr.mp3'
+
+const Q_audio_heater = 'https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3'
+const W_audio_heater = 'https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3'
+const E_audio_heater = 'https://s3.amazonaws.com/freecodecamp/drums/Heater-3.mp3'
+const A_audio_heater = 'https://s3.amazonaws.com/freecodecamp/drums/Heater-4_1.mp3'
+
+const S_audio_heater = 'https://s3.amazonaws.com/freecodecamp/drums/Heater-6.mp3'
+const D_audio_heater = 'https://s3.amazonaws.com/freecodecamp/drums/Dsc_Oh.mp3'
+const Z_audio_heater = 'https://s3.amazonaws.com/freecodecamp/drums/Kick_n_Hat.mp3'
+const X_audio_heater = 'https://s3.amazonaws.com/freecodecamp/drums/RP4_KICK_1.mp3'
+const C_audio_heater = 'https://s3.amazonaws.com/freecodecamp/drums/Cev_H2.mp3'
+
+const smooth = {
+  Q: Q_audio_smooth,
+  W: W_audio_smooth,
+  E: E_audio_smooth,
+  A: A_audio_smooth,
+  S: S_audio_smooth,
+  D: D_audio_smooth,
+  Z: Z_audio_smooth,
+  X: X_audio_smooth,
+  C: C_audio_smooth
+};
+const heater = {
+  Q: Q_audio_heater,
+  W: W_audio_heater,
+  E: E_audio_heater,
+  A: A_audio_heater,
+  S: S_audio_heater,
+  D: D_audio_heater,
+  Z: Z_audio_heater,
+  X: X_audio_heater,
+  C: C_audio_heater
+}
+
+    let pad = document.getElementById('pad-bank')
+    for (let child of pad.children) { child.insertAdjacentHTML( 'beforeend', `<audio src="${smooth[child.value]}" class="clip" id="${child.value}"></audio>` ); }
+
+  function playMusic(event) {   
+    const button = event.currentTarget;  
+    audio = button.querySelector('audio'); 
+    if (audio)
+    { 
+      audio.currentTime = 0; 
+      audio.play(); 
+    } 
+  }
+
+  let drum = document.getElementById('drum-pad')
+  drum.addEventListener('click',playMusic)
+
+  </script>
+
+</html>
