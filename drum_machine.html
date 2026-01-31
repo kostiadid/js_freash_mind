@@ -68,7 +68,7 @@ const heater = {
 }
 
     let pad = document.getElementById('pad-bank')
-    for (let child of pad.children) { child.insertAdjacentHTML( 'beforeend', `<audio src="${smooth[child.value]}" class="clip" id="${child.value}"></audio>` ); }
+    for (let child of pad.children) { child.insertAdjacentHTML( 'beforeend', `<audio src="${smooth[child.innerText]}" class="clip" id="${child.innerText}"></audio>` ); }
 
   function playMusic(event) {   
     const button = event.currentTarget;  
@@ -80,7 +80,7 @@ const heater = {
     } 
   }
 
-  let drum = document.getElementById('drum-pad')
+  let drum = document.querySelector('.drum-pad')
   drum.addEventListener('click',playMusic)
 
   </script>
