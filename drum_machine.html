@@ -78,7 +78,7 @@ const names = {
 
   function playMusic(event) {   
     const button = event.currentTarget;  
-    audio = button.querySelector('audio'); 
+    const audio = button.querySelector('audio'); 
     const display = document.getElementById('display');
     display.textContent = names[button.textContent.trim()];
 
