@@ -1,18 +1,21 @@
 class BankAccount{
-  balance = 0
-  transactions = []
-
-  constructor(balance,transactions){
+  constructor(balance = 0,transactions = []){
     this.balance = balance
     this.transactions = transactions
   }
 
-  deposit(sumDeposit){
-      if(sumDeposit <=0){
+  deposit(depositAmount){
+      if(depositAmount <=0){
         return "Deposit amount must be greater than zero."
       } else{
-        return `Successfully deposited ${'$'+sumDeposit}. New balance: ${'$'+sumDeposit}`
+        this.listAllDeposits(depositAmount)
+        this.balance = this.balance + depositAmount
+        
+        return `Successfully deposited $${depositAmount}. New balance: $${this.balance}`
       }
+  }
+  listAllDeposits =(amount)=>{
+    this.transactions.push(amount)
   }
 
   withdraw(withAmount){
@@ -22,8 +25,8 @@ class BankAccount{
   }
 
   checkBalance(){
-
-    return `Current balance: ${'$'+balance}`
+    balance = '$'+balance
+    return `Current balance: ${balance}`
   }
 
   listAllWithdrawals(){
